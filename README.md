@@ -1,14 +1,27 @@
-# ZKP gRPC client/server for authentication
+**This README is still under construction**
 
-## Local Run
+# ZKP Custom Chaum-Pedersen Protocol using Rust
 
-You will need to install the rust on your machine and also the `protobuf-compiler`, for Linux:
+I'm recently learn about this Chaum-Pedersen Protocol for Zero Knowledges Proof Cryptography
 
-```bash
-sudo apt install protobuf-compiler
+So decided to implement it using Rust
+
+## gRPC guide
+
+You can use Visual Code gRPC Cliker extension to register the user
+
+or you can set the docker-compose.yaml ENVIRONMENT variable for testing.
+
+example:
+
+```
+environment:
+    - USER=RBYSTNL
 ```
 
-## Docker
+## Server & Client Binaries Usage
+
+### Docker
 
 You can run the program with Docker. First build the containers:
 
