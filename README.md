@@ -8,52 +8,22 @@ So decided to implement it using Rust
 
 ## gRPC guide
 
-You can use Visual Code gRPC Clicker extension to register the user
+You can use Visual Code gRPC Clicker extension and create from proto file
 
-or you can set the docker-compose.yaml ENVIRONMENT variable for testing.
+## Build & Usage
 
-example:
+You need two terminal
 
-```
-environment:
-    - USER=RBYSTNL
-```
-
-## Server & Client Binaries Usage
-
-### Docker
-
-You can run the program with Docker. First build the containers:
+Terminal #1
 
 ```
-$ docker-compose build zkpserver
-```
-
-Run the container:
+cargo build --release --bin server && cd target\release && ./server
 
 ```
-$ docker-compose run --rm zkpserver
+
+Terminal #2
 ```
+cargo build --release --bin client && cd target\release && ./client
 
-In the remote terminal that appears run the server:
-
-```
-root@e84736012f9a:/zkp-server# cargo run --bin server --release
-```
-
-Open a new terminal on your machine and connect to the container:
-
-```
-$ docker container ls
-CONTAINER ID   IMAGE                  COMMAND   CREATED          STATUS          PORTS     NAMES
-e84736012f9a   zkp-course-zkpserver   "bash"    20 minutes ago   Up 20 minutes             zkp-course_zkpserver_run_b1f3fa2cd94a
-
-$ docker exec -it e84736012f9a /bin/bash
-```
-
-Run the client:
-
-```
-root@e84736012f9a:/zkp-server# cargo run --bin client --release
 ```
 
