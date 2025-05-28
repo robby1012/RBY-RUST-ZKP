@@ -8,7 +8,7 @@ So decided to implement it using Rust
 
 ## gRPC guide
 
-You can use Visual Code gRPC Cliker extension to register the user
+You can use Visual Code gRPC Clicker extension to register the user
 
 or you can set the docker-compose.yaml ENVIRONMENT variable for testing.
 
