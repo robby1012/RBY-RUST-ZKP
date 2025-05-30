@@ -35,8 +35,26 @@ Usage:
 docker-compose up -d --build
 ```
 
+on docker dashboard, click container, exec tab, run this command
+
+```
+/bin/bash
+
+cd /zkp-server/target/release
+
+./client
+```
+
+Follow the prompt.
+
+
 alternative:
 
 Use gRPC Cliker Extension to register, authenticate & verify
 
 set to localhost:500051 and use proto file from folder proto
+
+
+## on progress
+- Store private key to KMS (currently embedded in library)
+- Saving session ID to DB (redis or mongo)
