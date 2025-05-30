@@ -8,5 +8,5 @@ RUN apt update
 RUN apt install -y protobuf-compiler
 
 RUN cargo build --release --bin server
-RUN cd target/release
-RUN ./server
+RUN cp target/release/server /usr/local/bin/zkp-server
+CMD ["zkp-server"]
