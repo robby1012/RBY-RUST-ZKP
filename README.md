@@ -27,7 +27,9 @@ cargo build --release --bin client && cd target\release && ./client
 
 ```
 
-If you don't have docker or rust installed can use docker.
+If you don't have rust installed can use docker.
+
+Usage:
 
 ```
 docker-compose up -d --build
