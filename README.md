@@ -27,3 +27,11 @@ cargo build --release --bin client && cd target\release && ./client
 
 ```
 
+If you don't have docker or rust installed can use docker.
+
+```
+docker-compose up -d --build
+```
+
+Use gRPC Cliker Extension to register, authenticate & verify
+
