@@ -52,7 +52,7 @@ alternative:
 
 Use gRPC Cliker Extension to register, authenticate & verify
 
-set to localhost:500051 and use proto file from folder proto
+set to localhost:50051 and use proto file from folder proto
 
 
 ## on progress
