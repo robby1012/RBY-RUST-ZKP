@@ -35,11 +35,11 @@ impl ZKP {
         c: &BigUint,
         s: &BigUint,
     ) -> bool {
-        let cond1 = *r1
+        let cond1: bool = *r1
             == (&self.alpha.modpow(s, &self.p) * y1.modpow(c, &self.p))
                 .modpow(&BigUint::from(1u32), &self.p);
 
-        let cond2 = *r2
+        let cond2: bool = *r2
             == (&self.beta.modpow(s, &self.p) * y2.modpow(c, &self.p))
                 .modpow(&BigUint::from(1u32), &self.p);
 
@@ -47,7 +47,7 @@ impl ZKP {
     }
 
     pub fn generate_random_number_below(bound: &BigUint) -> BigUint {
-        let mut rng = rand::thread_rng();
+        let mut rng: rand::prelude::ThreadRng = rand::thread_rng();
 
         rng.gen_biguint_below(bound)
     }
@@ -61,18 +61,16 @@ impl ZKP {
     }
 
     pub fn get_constants() -> (BigUint, BigUint, BigUint, BigUint) {
-        let p = BigUint::from_bytes_be(&hex::decode("B10B8F96A080E01DDE92DE5EAE5D54EC52C99FBCFB06A3C69A6A9DCA52D23B616073E28675A23D189838EF1E2EE652C013ECB4AEA906112324975C3CD49B83BFACCBDD7D90C4BD7098488E9C219A73724EFFD6FAE5644738FAA31A4FF55BCCC0A151AF5F0DC8B4BD45BF37DF365C1A65E68CFDA76D4DA708DF1FB2BC2E4A4371").unwrap());
-        let q = BigUint::from_bytes_be(
-            &hex::decode("F518AA8781A8DF278ABA4E7D64B7CB9D49462353").unwrap(),
-        );
-
-        let alpha = BigUint::from_bytes_be(
-            &hex::decode("A4D1CBD5C3FD34126765A442EFB99905F8104DD258AC507FD6406CFF14266D31266FEA1E5C41564B777E690F5504F213160217B4B01B886A5E91547F9E2749F4D7FBD7D3B9A92EE1909D0D2263F80A76A6A24C087A091F531DBF0A0169B6A28AD662A4D18E73AFA32D779D5918D08BC8858F4DCEF97C2A24855E6EEB22B3B2E5").unwrap(),
-        );
+        let p_hex: &Vec<u8> = &hex::decode("B10B8F96A080E01DDE92DE5EAE5D54EC52C99FBCFB06A3C69A6A9DCA52D23B616073E28675A23D189838EF1E2EE652C013ECB4AEA906112324975C3CD49B83BFACCBDD7D90C4BD7098488E9C219A73724EFFD6FAE5644738FAA31A4FF55BCCC0A151AF5F0DC8B4BD45BF37DF365C1A65E68CFDA76D4DA708DF1FB2BC2E4A4371").unwrap();
+        let p: BigUint = BigUint::from_bytes_be(&p_hex);
+        let q_hex: &Vec<u8> = &hex::decode("F518AA8781A8DF278ABA4E7D64B7CB9D49462353").unwrap();
+        let q: BigUint = BigUint::from_bytes_be(&q_hex);
+        let alpha_hex: &Vec<u8> = &hex::decode("A4D1CBD5C3FD34126765A442EFB99905F8104DD258AC507FD6406CFF14266D31266FEA1E5C41564B777E690F5504F213160217B4B01B886A5E91547F9E2749F4D7FBD7D3B9A92EE1909D0D2263F80A76A6A24C087A091F531DBF0A0169B6A28AD662A4D18E73AFA32D779D5918D08BC8858F4DCEF97C2A24855E6EEB22B3B2E5").unwrap();
+        let alpha = BigUint::from_bytes_be(&alpha_hex);
 
         // beta = alpha^i is also a generator
-        let exp = BigUint::from_bytes_be(&hex::decode("266FEA1E5C41564B777E69").unwrap());
-        let beta = alpha.modpow(&exp, &p);
+        let exp: BigUint = BigUint::from_bytes_be(&hex::decode("266FEA1E5C41564B777E69").unwrap());
+        let beta: BigUint = alpha.modpow(&exp, &p);
 
         (alpha, beta, p, q)
     }

@@ -75,7 +75,7 @@ impl Auth for AuthImpl {
         if let Some(user_info) = user_info_hashmap.get_mut(&user_name) {
             let (_, _, _, q) = ZKP::get_constants();
             let c = ZKP::generate_random_number_below(&q);
-            let auth_id = ZKP::generate_random_string(12);
+            let auth_id = ZKP::generate_random_string(64);
 
             user_info.c = c.clone();
             user_info.r1 = BigUint::from_bytes_be(&request.r1);
@@ -131,9 +131,10 @@ impl Auth for AuthImpl {
             );
 
             if verification {
-                let session_id = ZKP::generate_random_string(12);
+                let session_id = ZKP::generate_random_string(64);
 
                 println!("✅ Correct Challenge Solution username: {:?}", user_name);
+                println!("[Debug] Your Auth ID: {}, Session ID: {}",auth_id,session_id);
 
                 Ok(Response::new(AuthenticationAnswerResponse { session_id }))
             } else {

@@ -1,12 +1,10 @@
-version: '3.8'
-
 services:
   zkpserver:
     build: .
     volumes:
       - ./:/zkp-server
     environment:
-      - USER=<Your Username>
+      - USER=RBYSTNL
     container_name: zkpserver
     ports:
       - "50051:50051"
