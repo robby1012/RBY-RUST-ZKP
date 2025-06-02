@@ -53,8 +53,3 @@ alternative:
 Use gRPC Cliker Extension to register, authenticate & verify
 
 set to localhost:50051 and use proto file from folder proto
-
-
-## on progress
-- Store private key to KMS (currently embedded in library)
-- Saving session ID to DB (redis or mongo)
