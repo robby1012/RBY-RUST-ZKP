@@ -7,11 +7,15 @@ edition = "2021"
 
 [dependencies]
 rand = "0.8"
-num-bigint = { version = "0.4", features = ["rand"] }
+num-bigint = { version = "0.4", features = ["rand","serde"] }
 hex = "0.4.3"
 tonic = "0.9"
 prost = "0.11"
 tokio = { version = "1.0", features = ["macros", "rt-multi-thread"] } # async rust runtime
+redis = "0.24"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+bincode = "1.3"
 
 [build-dependencies]
 tonic-build = "0.9"
@@ -21,5 +25,17 @@ name = "server"
 path = "./src/server.rs"
 
 [[bin]]
+name = "server_redis"
+path = "./src/server_redis.rs"
+
+[[bin]]
 name = "client"
 path = "./src/client.rs"
+
+[[bin]]
+name = "login"
+path = "./src/login.rs"
+
+[[bin]]
+name = "client_debug"
+path = "./src/client_debug.rs"

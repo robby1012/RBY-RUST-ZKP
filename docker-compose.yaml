@@ -1,10 +1,12 @@
 services:
-  zkpserver:
-    build: .
-    volumes:
-      - ./:/zkp-server
-    environment:
-      - USER=RBYSTNL
-    container_name: zkpserver
+  redis:
+    image: redis:latest
+    container_name: zkp-redis
     ports:
-      - "50051:50051"
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    restart: unless-stopped
+
+volumes:
+  redis-data:
